@@ -258,7 +258,7 @@ Private Function AbortProcedure()
     Dim lngCol As Long
     
     If cmdButton(1).Enabled Then
-        For lngCol = 1 To grdGrid.ColCount
+        For lngCol = 1 To grdGrid.colCount
             grdGrid.CellValue(CommonIndex.grdGrid.CurRow, lngCol) = ""
         Next lngCol
     End If
@@ -340,3 +340,4 @@ Private Function ToggleInactiveRecords()
     Next lngRow
 
 End Function
+

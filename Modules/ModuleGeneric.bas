@@ -59,6 +59,9 @@ Public Type typTableData
     strTwelveField As String
     strThirteenField As String
     strFourteenField As String
+    strFifteenField As String
+    strSixteenField As String
+    strSeventeenField As String
 End Type
 
 Function ToggleFieldVisibility(visibility As Boolean, ParamArray tmpFields())
@@ -1727,6 +1730,10 @@ Function DisplayIndex(tmpRecordset, blnShowList, blnIncludeOneRecordCount, strTi
         TempFields.strTwelveField = .grdGrid.CellValue(.grdGrid.CurRow, 13)
         TempFields.strThirteenField = .grdGrid.CellValue(.grdGrid.CurRow, 14)
         TempFields.strFourteenField = .grdGrid.CellValue(.grdGrid.CurRow, 15)
+        TempFields.strFifteenField = .grdGrid.CellValue(.grdGrid.CurRow, 16)
+        TempFields.strSixteenField = .grdGrid.CellValue(.grdGrid.CurRow, 17)
+        TempFields.strSeventeenField = .grdGrid.CellValue(.grdGrid.CurRow, 18)
+        
     End With
     
     DisplayIndex = TempFields
@@ -2686,8 +2693,8 @@ Function ToggleInfoPanel(thisForm As Form)
             .Visible = False
         Else
             .Visible = True
-            .Left = 100
-            .Top = 100
+            .Left = 2500
+            .Top = 3000
             .ZOrder 0
         End If
     End With
