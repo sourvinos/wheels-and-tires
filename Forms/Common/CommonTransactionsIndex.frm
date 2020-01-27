@@ -2061,7 +2061,7 @@ End Function
 
 Private Function RefreshList()
 
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
     
     'SQL
     Dim intIndex As Byte
@@ -2102,24 +2102,24 @@ Private Function RefreshList()
     'Αγορές, πωλήσεις, κινήσεις πελατών και προμηθευτών
     If txtRefersTo.text <> "5" Then
         strSQL = "SELECT InvoiceID, InvoiceIssueDate, InvoiceNo, InvoiceRefersToID, InvoiceRestAmount, InvoiceVATAmount, InvoiceGrossAmount, InvoiceTrnID, InvoicePersonID, InvoiceInDate, InvoiceExtraChargesAmount, PaymentWayDescription, " & txtTable.text & ".Description, " & txtTable.text & ".TaxNo, " & txtTable.text & ".Address, TaxOfficeDescription, CodeDescription, CodeSuppliers, CodeCustomers, DeliveryPointDescription, CountryShortDescription " _
-        & "FROM (((((Invoices " _
-        & "INNER JOIN " & txtTable.text & " ON Invoices.InvoicePersonID = " & txtTable.text & ".ID) " _
-        & "INNER JOIN Codes ON Invoices.InvoiceCodeID = Codes.CodeID) " _
-        & "INNER JOIN PaymentWays ON Invoices.InvoicePaymentWayID = PaymentWays.PaymentWayID) " _
-        & "INNER JOIN TaxOffices ON " & txtTable.text & ".TaxOfficeID = TaxOffices.TaxOfficeID) " _
-        & "INNER JOIN DeliveryPoints ON Invoices.InvoiceDeliveryPointID = DeliveryPoints.DeliveryPointID) " _
-        & "INNER JOIN Countries ON " & txtTable.text & ".CountryID = Countries.CountryID "
+            & "FROM (((((Invoices " _
+            & "INNER JOIN " & txtTable.text & " ON Invoices.InvoicePersonID = " & txtTable.text & ".ID) " _
+            & "INNER JOIN Codes ON Invoices.InvoiceCodeID = Codes.CodeID) " _
+            & "INNER JOIN PaymentWays ON Invoices.InvoicePaymentWayID = PaymentWays.PaymentWayID) " _
+            & "INNER JOIN TaxOffices ON " & txtTable.text & ".TaxOfficeID = TaxOffices.TaxOfficeID) " _
+            & "INNER JOIN DeliveryPoints ON Invoices.InvoiceDeliveryPointID = DeliveryPoints.DeliveryPointID) " _
+            & "INNER JOIN Countries ON " & txtTable.text & ".CountryID = Countries.CountryID "
     End If
     
     'Κινήσεις ειδών
     If txtRefersTo.text = "5" Then
         strSQL = "SELECT InvoiceID, InvoiceIssueDate, InvoiceNo, InvoiceRefersToID, InvoiceRestAmount, InvoiceVATAmount, InvoiceGrossAmount, Invoices.InvoiceTrnID, InvoicePersonID, InvoiceInDate, CodeDescription, Items.ItemDescription, InvoicesTrn.Qty, CodeInventoryQty, CodeInventoryValue, CodeSuppliers, CodeCustomers, ManufacturerDescription, CategoryDescription " _
-        & "FROM ((((Invoices " _
-        & "INNER JOIN Codes ON Invoices.InvoiceCodeID = Codes.CodeID) " _
-        & "INNER JOIN InvoicesTrn ON Invoices.InvoiceTrnID = InvoicesTrn.InvoiceTrnID) " _
-        & "INNER JOIN Items ON InvoicesTrn.ItemID = Items.ItemID) " _
-        & "INNER JOIN Manufacturers ON Items.ItemManufacturerID = Manufacturers.ManufacturerID) " _
-        & "INNER JOIN Categories ON Items.ItemCategoryID = Categories.CategoryID "
+            & "FROM ((((Invoices " _
+            & "INNER JOIN Codes ON Invoices.InvoiceCodeID = Codes.CodeID) " _
+            & "INNER JOIN InvoicesTrn ON Invoices.InvoiceTrnID = InvoicesTrn.InvoiceTrnID) " _
+            & "INNER JOIN Items ON InvoicesTrn.ItemID = Items.ItemID) " _
+            & "INNER JOIN Manufacturers ON Items.ItemManufacturerID = Manufacturers.ManufacturerID) " _
+            & "INNER JOIN Categories ON Items.ItemCategoryID = Categories.CategoryID "
     End If
     
     'Τύπος κίνησης

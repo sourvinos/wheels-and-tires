@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{396F7AC0-A0DD-11D3-93EC-00C0DFE7442A}#1.0#0"; "ImageList.ocx"
 Object = "{158C2A77-1CCD-44C8-AF42-AA199C5DCC6C}#1.0#0"; "dcButton.ocx"
 Object = "{FFE4AEB4-0D55-4004-ADF2-3C1C84D17A72}#1.0#0"; "userControls.ocx"
-Object = "{E3F0D4E9-96BB-4A6B-BA7B-D9C806E333BB}#1.0#0"; "buttons.ocx"
+Object = "{E3F0D4E9-96BB-4A6B-BA7B-D9C806E333BB}#1.0#0"; "Buttons.ocx"
 Begin VB.Form Persons 
    Appearance      =   0  'Flat
    BackColor       =   &H00E0E0E0&
@@ -1501,8 +1501,10 @@ Private Function CheckDuplicateTaxNo(tmpTaxNo)
     End If
     
     If Not blnStatus Then
-        If tmpRecordset.RecordCount = 1 And tmpRecordset.Fields(0) <> txtID.text Then
-            CheckDuplicateTaxNo = tmpRecordset.Fields(1)
+        If tmpRecordset.RecordCount = 1 Then
+            If tmpRecordset.Fields(0) <> txtID.text Then
+                CheckDuplicateTaxNo = tmpRecordset.Fields(1)
+            End If
         End If
     End If
 

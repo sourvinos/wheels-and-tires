@@ -2010,7 +2010,7 @@ End Function
 
 Function MainSaveRecord(SelectedDB, Table, Status, FormTitle, IndexField, CodeToSeek, ParamArray Fields() As Variant)
 
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
     
     Dim lngFieldNo As Long
     Dim rsTable As Recordset
@@ -2335,6 +2335,7 @@ Function LoadMessages()
     strMessages(26) = "Η εργασία αντιμετώπισε πρόβλημα και δεν" & Chr(13) & " ολοκληρώθηκε. Ελέγξτε το αρχείο λαθών που έχει δημιουργηθεί."
     strMessages(27) = "Η εφαρμογή ξεκινάει. Εχετε λίγη υπομονή!"
     strMessages(28) = "Ο φορολογικός μηχανισμός" & Chr(13) & "δεν είναι ενεργός." & Chr(13) & "Θέλετε να συνεχίσετε;"
+    strMessages(29) = Chr(13) & "Το παραστατικό που ακυρώνεται δεν βρέθηκε."
     strMessages(30) = "ΣΕ ΜΕΤΑΦΟΡΑ"
     strMessages(31) = "ΑΠΟ ΜΕΤΑΦΟΡΑ"
     strMessages(32) = "ΓΕΝΙΚΑ ΣΥΝΟΛΑ"

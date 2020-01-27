@@ -38,9 +38,9 @@ Begin VB.Form CommonTransactions
          Enabled         =   0   'False
          ForeColor       =   &H80000008&
          Height          =   8490
-         Left            =   10125
+         Left            =   8850
          TabIndex        =   13
-         Top             =   4125
+         Top             =   1350
          Width           =   8940
          Begin VB.TextBox txtCodeDTableCredit 
             Appearance      =   0  'Flat
@@ -3528,6 +3528,94 @@ Private Function ItemDescriptionAndManufacturer(strItemDescription As String, st
     
 End Function
 
+Private Function SeekInvoiceToCancel()
+
+    Dim intIndex As Byte
+    Dim strThisQuery As String
+    Dim strParameters As String
+    Dim strParFields As String
+    Dim strThisParameter As String
+    Dim strOrder As String
+    Dim strLogic As String
+    Dim arrQuery() As Variant
+    Dim strSQL As String
+    
+    Dim rstRecordset As Recordset
+    
+    Set TempQuery = CommonDB.CreateQueryDef("")
+    
+    strSQL = "SELECT InvoiceID FROM Invoices "
+    
+    'Εκδοση
+    strThisParameter = "datIssue Date"
+    strThisQuery = "Invoices.InvoiceIssueDate = datIssue"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = CDate(mskInvoiceIssueDate.text)
+    
+    'Παραστατικό
+    strThisParameter = "intCodeID Integer"
+    strThisQuery = "Invoices.InvoiceCodeID = intCodeID"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = Val(txtInvoiceCodeCreditID.text)
+    
+    'Νο παραστατικού
+    strThisParameter = "intInvoiceNo Integer"
+    strThisQuery = "Invoices.InvoiceNo = intInvoiceNo"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = Val(txtInvoiceNoCredit.text)
+    
+    'Συναλλασόμενος
+    strThisParameter = "intPersonID Integer"
+    strThisQuery = "Invoices.InvoicePersonID = intPersonID"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = Val(txtInvoicePersonID.text)
+    
+    'Προσθέτω τα κριτήρια
+    strParameters = "PARAMETERS " & strParameters & "; "
+    strParFields = "WHERE " & strParFields
+    strSQL = strParameters & strSQL & strParFields
+    
+    'SQL
+    TempQuery.SQL = strSQL & strOrder
+    
+    'Κριτήρια
+    If strThisParameter <> "" Then
+        For intIndex = 1 To UBound(arrQuery)
+            TempQuery.Parameters(intIndex - 1) = arrQuery(intIndex)
+        Next intIndex
+    End If
+    
+    'Ανοίγω το recordset
+    Set rstRecordset = TempQuery.OpenRecordset()
+    
+    'Αν δεν έχω εγγραφές, βγαίνω
+    If rstRecordset.RecordCount = 0 Then
+        If DisplayMessage(29, 4, 1, "", "") Then
+            ClearFields txtCodeShortDescriptionCredit, txtInvoiceNoCredit, txtInvoiceCodeCreditID, txtCodeDTableCredit
+            SeekInvoiceToCancel = False
+        End If
+    Else
+        SeekInvoiceToCancel = True
+    End If
+    
+    Exit Function
+    
+UpdateSQLString:
+    intIndex = intIndex + 1
+    strParameters = IIf(intIndex > 1, strParameters & ", ", strParameters)
+    strParFields = IIf(intIndex > 1, strParFields & strLogic, strParFields)
+    strParameters = strParameters & strThisParameter
+    strParFields = strParFields & strThisQuery
+    ReDim Preserve arrQuery(intIndex)
+    
+    Return
+
+End Function
+
 Private Function ShowCredits()
 
     lblSimple(21).Visible = True
@@ -4296,7 +4384,7 @@ Function FindInvoicesWithTrnID(myInvoiceTrnID, myWindowTitle, myTable, myRefersT
     'Ενημερώνω τα πεδία της φόρμας
     With rstRecordset
         'Ημερομηνία
-        mskInvoiceIssueDate.text = format(!InvoiceIssueDate, "dd/mm/yyyy")
+        mskInvoiceIssueDate.text = format(!invoiceIssueDate, "dd/mm/yyyy")
         'Συναλλασόμενος
         FindPersonDetails !InvoicePersonID
         'Παραστατικό
@@ -5504,6 +5592,13 @@ Private Function ValidateFields()
         End If
     End If
     
+    'Αν εκδίδεται ακυρωτικό, ελέγχω αν υπάρχει αυτό που ακυρώνω, όπως γίνεται και επάνω στα πεδία τη στιγμή της καταχώρησης
+    If txtCodeIsCreditID.text = "1" Then
+        If Not SeekInvoiceToCancel Then
+            Exit Function
+        End If
+    End If
+    
     'Εκτύπωση ΥγΣΜ - μόνο για πωλήσεις
     If txtInvoicePrintExtraRemarksID.text = "" And txtRefersTo.text = "2" Then
         If DisplayMessage(1, 4, 1, "", txtInvoicePrintExtraRemarksID.text) Then
@@ -5637,7 +5732,7 @@ End Sub
 Private Sub txtCodeShortDescriptionCredit_Change()
 
     If txtCodeShortDescriptionCredit.text = "" Then
-        ClearFields txtInvoiceCodeCreditID, txtCodeDTable, txtCodeDTableCredit
+        ClearFields txtInvoiceCodeCreditID, txtCodeDTableCredit, txtInvoiceNoCredit
     End If
 
 End Sub
@@ -5654,6 +5749,9 @@ Private Sub txtCodeShortDescriptionCredit_Validate(Cancel As Boolean)
    If txtInvoiceCodeCreditID.text = "" And txtCodeShortDescriptionCredit.text <> "" Then
         cmdIndex_Click 10
         If txtInvoiceCodeCreditID.text = "" Then Cancel = True
+        If txtInvoiceCodeCreditID.text <> "" And txtInvoiceNoCredit.text <> "" Then
+            SeekInvoiceToCancel
+        End If
     End If
 
 End Sub
@@ -5682,6 +5780,16 @@ Private Sub txtInvoiceIsPrinted_Change()
     cmdIndex(9).Enabled = txtInvoicePersonID.text <> "" And txtInvoiceIsPrinted.text <> "1"
 
 End Sub
+
+Private Sub txtInvoiceNoCredit_Validate(Cancel As Boolean)
+
+    If txtInvoiceCodeCreditID.text <> "" And txtInvoiceNoCredit.text <> "" Then
+        SeekInvoiceToCancel
+    End If
+
+End Sub
+
+
 
 Private Sub txtInvoicePersonID_Change()
 
@@ -5739,7 +5847,7 @@ End Sub
 
 Private Sub txtPersonDescription_Change()
 
-    If txtPersonDescription.text = "" Then ClearFields txtInvoicePersonID, txtInvoicePlates, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATStateID
+    If txtPersonDescription.text = "" Then ClearFields txtInvoicePersonID, txtInvoicePlates, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATStateID, txtInvoiceCodeID, txtCodeShortDescription, txtInvoiceNo, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
 
 End Sub
 
