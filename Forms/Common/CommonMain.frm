@@ -243,7 +243,6 @@ Private Sub Form_Load()
     End With
     
     ResizeBar 1, 1, vbExplorerBar, arrMenu(1), arrMenu(2), arrMenu(3), arrMenu(4), arrMenu(5), arrMenu(6), arrMenu(7), arrMenu(8)
-    'vbExplorerBar.Bars(1).State = eBarExpanded
     
     strUnicodeFile = strReportsPathName & GetSetting(strAppTitle, "Path Names", "UnicodeFileName")
     strAsciiFile = GetSetting(strAppTitle, "Path Names", "AsciiFileName")

@@ -885,7 +885,7 @@ Function ConvertToAsciiFile(strUnicodeFile, strAsciiFile)
     Dim strOutputFile As String
     
     strInputFile = strUnicodeFile
-    strOutputFile = strAsciiFile
+    strOutputFile = strAsciiFile & "demo"
     
     Open strInputFile For Input As #1
     Open strOutputFile For Output As #2

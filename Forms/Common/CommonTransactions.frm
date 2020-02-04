@@ -3483,7 +3483,6 @@ Private Function CreateELine()
     'ΦΠΑ συντελεστή Β
     'ΦΠΑ συντελεστή Γ
     'ΦΠΑ συντελεστή Δ
-    'ΦΠΑ συντελεστή Ε
     'Σύνολο αξίας
     'Κωδικός νομίσματος
     'Συμβολοσειρά αναγνώρισης τέλους
@@ -3505,7 +3504,6 @@ Private Function CreateELine()
         "0" + ";" + _
         "0" + ";" + _
         TransformAmount(mskTotalVAT.text) + ";" + _
-        "0" + ";" + _
         "0" + ";" + _
         TransformAmount(mskTotalGross.text) + ";" + _
         "0" + _
@@ -4400,6 +4398,7 @@ Private Function SaveInvoice()
             txtInvoiceDestinationSite.text, _
             txtInvoiceDeliveryPointID.text, _
             IIf(txtInvoicePrintExtraRemarksID.text <> "", txtInvoicePrintExtraRemarksID.text, "0"), _
+            IIf(txtInvoiceCancelTrnID.text <> "", Val(txtInvoiceCancelTrnID.text), 0), _
             strCurrentUser) <> 0 Then
             blnError = True
         End If
@@ -4416,32 +4415,32 @@ Private Function SaveRecord()
     
     If txtCodeHandID.text = "1" Or (txtCodeHandID.text = "0" And blnStatus) Then BeginTrans
     
-    'DeleteInvoicesTrn
-    'SaveInvoice
-    'SaveInvoicesTrn
+    DeleteInvoicesTrn
+    SaveInvoice
+    SaveInvoicesTrn
     SaveELine
-    'UpdateCodes
-    'UpdateItemsWithNewBalance
-    'TransformInvoices
-    'PrintInvoice
+    UpdateCodes
+    UpdateItemsWithNewBalance
+    TransformInvoices
+    PrintInvoice
         
-    'If Not blnError Then
-    '    If txtCodeHandID.text = "1" Or (txtCodeHandID.text = "0" And blnStatus) Then CommitTrans
-    '
-    '    ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
-    '    ClearFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
-    '    ClearFields mskTotalQty, mskTotalPreDiscount, mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT, mskTotalGross
-    '
-    '    DisableFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
-    '    DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
-    '    DisableFields mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT
-    '
-    '    HideCredits
-    '
-    '    UpdateButtons Me, 5, 1, 0, 0, IIf(CheckForLoadedForm("CommonTransactionsIndex"), 0, 1), 0, 1
-    'Else
-    '    If txtCodeHandID.text = "1" Or (txtCodeHandID.text = "0" And blnStatus) Then Rollback
-    'End If
+    If Not blnError Then
+        If txtCodeHandID.text = "1" Or (txtCodeHandID.text = "0" And blnStatus) Then CommitTrans
+    
+        ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
+        ClearFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
+        ClearFields mskTotalQty, mskTotalPreDiscount, mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT, mskTotalGross
+    
+        DisableFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
+        DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
+        DisableFields mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT
+    
+        HideCredits
+    
+        UpdateButtons Me, 5, 1, 0, 0, IIf(CheckForLoadedForm("CommonTransactionsIndex"), 0, 1), 0, 1
+    Else
+        If txtCodeHandID.text = "1" Or (txtCodeHandID.text = "0" And blnStatus) Then Rollback
+    End If
     
 End Function
 
@@ -4481,7 +4480,7 @@ Function FindInvoicesWithTrnID(myInvoiceTrnID, myWindowTitle, myTable, myRefersT
     Set TempQuery = CommonDB.CreateQueryDef("")
     
     'Κύριο SQL
-    strSQL = "SELECT InvoiceIssueDate, InvoiceNo, InvoiceCodeID, InvoiceRefersToID, InvoiceQty, InvoiceNet, InvoicePercentDiscount, InvoiceAmountDiscount, InvoiceRestAmount, InvoiceVATAmount, InvoiceGrossAmount, InvoiceTrnID, InvoiceRemarks, InvoicePlates, InvoicePaymentWayID, InvoicePersonID, InvoiceIsInvoiced, InvoiceIsPrinted, InvoiceInDate, InvoiceInTime, InvoiceExtraChargesAmount, InvoiceTransportReason, InvoiceTransportWay, InvoiceLoadingSite, InvoiceDestinationSite, InvoiceDeliveryPointID, InvoicePrintExtraRemarksID " _
+    strSQL = "SELECT InvoiceIssueDate, InvoiceNo, InvoiceCodeID, InvoiceRefersToID, InvoiceQty, InvoiceNet, InvoicePercentDiscount, InvoiceAmountDiscount, InvoiceRestAmount, InvoiceVATAmount, InvoiceGrossAmount, InvoiceTrnID, InvoiceRemarks, InvoicePlates, InvoicePaymentWayID, InvoicePersonID, InvoiceIsInvoiced, InvoiceIsPrinted, InvoiceInDate, InvoiceInTime, InvoiceExtraChargesAmount, InvoiceTransportReason, InvoiceTransportWay, InvoiceLoadingSite, InvoiceDestinationSite, InvoiceDeliveryPointID, InvoicePrintExtraRemarksID, InvoiceCancelTrnID " _
         & "FROM Invoices "
         
     'TrnID παραστατικού
@@ -4578,6 +4577,17 @@ Function FindInvoicesWithTrnID(myInvoiceTrnID, myWindowTitle, myTable, myRefersT
         txtInvoiceInDate.text = format(!InvoiceInDate, "dd/mm/yy")
         txtInvoiceInTime.text = format(!InvoiceInTime, "hh:mm")
         txtRefersTo.text = !InvoiceRefersToID
+        'Βρίσκω το παραστατικο που ακυρώνεται
+        txtInvoiceCancelTrnID.text = !InvoiceCancelTrnID
+        If txtInvoiceCancelTrnID.text <> "0" Then
+            Set tmpRecordset = CheckForMatch("Invoices", Val(txtInvoiceCancelTrnID.text), "Invoices", "InvoiceID", "Numeric", 0, 1)
+            txtInvoiceCodeCreditID.text = tmpRecordset.Fields(3)
+            txtInvoiceNoCredit.text = tmpRecordset.Fields(2)
+            Set tmpRecordset = CheckForMatch("CommonDB", txtInvoiceCodeCreditID.text, "Codes", "CodeID", "Numeric", 0, 1)
+            txtCodeShortDescriptionCredit.text = tmpRecordset.Fields(1)
+            EnableFields cmdIndex(10)
+            ShowCredits
+        End If
     End With
     
     CustomizeGrid grdCommonTransactions
