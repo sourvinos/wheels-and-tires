@@ -43,6 +43,50 @@ Begin VB.Form CommonTransactions
          TabIndex        =   13
          Top             =   525
          Width           =   8940
+         Begin VB.TextBox Text33 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C00000&
+            BorderStyle     =   0  'None
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   315
+            Left            =   4500
+            TabIndex        =   141
+            TabStop         =   0   'False
+            Text            =   "Person.VATArticleNo"
+            Top             =   3075
+            Width           =   3540
+         End
+         Begin VB.TextBox txtVATArticleNo 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C00000&
+            BorderStyle     =   0  'None
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   315
+            Left            =   8100
+            TabIndex        =   140
+            TabStop         =   0   'False
+            Text            =   "30"
+            Top             =   3075
+            Width           =   780
+         End
          Begin VB.TextBox Text36 
             Appearance      =   0  'Flat
             BackColor       =   &H0000C000&
@@ -546,7 +590,7 @@ Begin VB.Form CommonTransactions
             TabIndex        =   108
             TabStop         =   0   'False
             Text            =   "TaxOffices.TaxOfficeDescription"
-            Top             =   3075
+            Top             =   3450
             Width           =   3540
          End
          Begin VB.TextBox txtTaxOfficeDescription 
@@ -568,7 +612,7 @@ Begin VB.Form CommonTransactions
             TabIndex        =   107
             TabStop         =   0   'False
             Text            =   "31"
-            Top             =   3075
+            Top             =   3450
             Width           =   780
          End
          Begin VB.TextBox txtPhones 
@@ -1541,7 +1585,7 @@ Begin VB.Form CommonTransactions
          End
          Begin vbalIml6.vbalImageList lstIconList 
             Left            =   8325
-            Top             =   3450
+            Top             =   3825
             _ExtentX        =   953
             _ExtentY        =   953
             IconSizeX       =   26
@@ -3487,14 +3531,17 @@ Private Function CreateELine()
     'Κωδικός νομίσματος
     'Συμβολοσειρά αναγνώρισης τέλους
     
+    
     eLine.text = _
         "$$$" + _
         "099863549" + ";" + _
         txtTaxNo.text + ";" + _
         "0" + ";" + _
-         txtCodeDTable.text + ";" + _
+         txtCodeDTable.text + "" + _
+         IIf(txtVATStateID.text = "2", "#" + txtVATArticleNo.text, "") + _
          IIf(txtCodeIsCreditID.text = "1", "#" + txtCodeDTableCredit.text + "#" + txtInvoiceNoCredit.text, "") + _
-        "" + ";" + _
+         "" + ";" + _
+         "" + ";" + _
         txtInvoiceNo.text + ";" + _
         "0" + ";" + _
         "0" + ";" + _
@@ -3569,7 +3616,7 @@ Private Function FindPersonDetails(lngPersonID)
 
     Dim tmpRecordset As Recordset
     
-    Set tmpRecordset = NewCheckForMatch("CommonDB", "ID, Description, TaxNo, Profession, Address, City, Phones, VATStateID, TaxOfficeDescription, CountryShortDescription", _
+    Set tmpRecordset = NewCheckForMatch("CommonDB", "ID, Description, TaxNo, Profession, Address, City, Phones, VATStateID, TaxOfficeDescription, CountryShortDescription, VATArticleNo", _
         "((" & txtTable.text, _
         "INNER JOIN TaxOffices ON " & txtTable.text & ".TaxOfficeID = TaxOffices.TaxOfficeID) " & _
         "INNER JOIN Countries ON " & txtTable.text & ".CountryID = Countries.CountryID)", "ID = " & lngPersonID, "", "ID")
@@ -3584,6 +3631,7 @@ Private Function FindPersonDetails(lngPersonID)
         txtVATStateID.text = tmpRecordset!VATStateID
         txtTaxNo.text = tmpRecordset!CountryShortDescription & " " & tmpRecordset!TaxNo
         txtTaxOfficeDescription.text = tmpRecordset!TaxOfficeDescription
+        txtVATArticleNo.text = tmpRecordset!VATArticleNo
     End If
     
 End Function
@@ -3874,7 +3922,7 @@ Private Function AbortProcedure(blnStatus)
         If MyMsgBox(3, strAppTitle, strMessages(3), 2) Then
             blnStatus = False
             
-            ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit, grdCommonTransactions
+            ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATArticleNo, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit, grdCommonTransactions
             ClearFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
             ClearFields mskTotalQty, mskTotalPreDiscount, mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT, mskTotalGross
             
@@ -3965,7 +4013,7 @@ Private Function DeleteRecord()
     If Not blnError Then
         CommitTrans
         
-        ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
+        ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATArticleNo, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
         ClearFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
         ClearFields mskTotalQty, mskTotalPreDiscount, mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT, mskTotalGross
         
@@ -4146,7 +4194,7 @@ Private Function NewRecord()
     
     blnStatus = True
     
-    ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
+    ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATArticleNo, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
     ClearFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
     ClearFields mskTotalQty, mskTotalPreDiscount, mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT, mskTotalGross
     
@@ -4427,7 +4475,7 @@ Private Function SaveRecord()
     If Not blnError Then
         If txtCodeHandID.text = "1" Or (txtCodeHandID.text = "0" And blnStatus) Then CommitTrans
     
-        ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
+        ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATArticleNo, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
         ClearFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
         ClearFields mskTotalQty, mskTotalPreDiscount, mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT, mskTotalGross
     
@@ -4529,14 +4577,15 @@ Function FindInvoicesWithTrnID(myInvoiceTrnID, myWindowTitle, myTable, myRefersT
         txtCodeHandID.text = tmpRecordset.Fields(10)
         txtCodeInventoryQty.text = tmpRecordset.Fields(4)
         txtCodeInventoryValue.text = tmpRecordset.Fields(5)
-        txtCodeTransformID.text = tmpRecordset.Fields(12)
-        txtCodeLastNo.text = tmpRecordset.Fields(14)
-        mskCodeLastDate.text = tmpRecordset.Fields(15)
+        txtCodeTransformID.text = tmpRecordset.Fields(13)
+        txtCodeLastNo.text = tmpRecordset.Fields(15)
+        mskCodeLastDate.text = tmpRecordset.Fields(16)
         txtCodePrinterID.text = tmpRecordset.Fields(11)
-        mskCodeDetailLines.text = tmpRecordset.Fields(16)
-        txtCodeDateCheckID.text = tmpRecordset.Fields(17)
+        mskCodeDetailLines.text = tmpRecordset.Fields(17)
+        txtCodeDateCheckID.text = tmpRecordset.Fields(18)
         txtInvoiceDeliveryPointID.text = !InvoiceDeliveryPointID
         txtInvoicePrintExtraRemarksID.text = !InvoicePrintExtraRemarksID
+        txtCodeDTable.text = tmpRecordset.Fields(12)
         'Νο παραστατικού
         txtInvoiceNo.text = !InvoiceNo
         'Τυπώνει επιπλέον παρατηρήσεις
@@ -4585,13 +4634,16 @@ Function FindInvoicesWithTrnID(myInvoiceTrnID, myWindowTitle, myTable, myRefersT
             txtInvoiceNoCredit.text = tmpRecordset.Fields(2)
             Set tmpRecordset = CheckForMatch("CommonDB", txtInvoiceCodeCreditID.text, "Codes", "CodeID", "Numeric", 0, 1)
             txtCodeShortDescriptionCredit.text = tmpRecordset.Fields(1)
-            EnableFields cmdIndex(10)
+            DisableFields cmdIndex(10)
             ShowCredits
         End If
     End With
     
     CustomizeGrid grdCommonTransactions
     EnableTabStop grdCommonTransactions
+    
+    CreateELine
+    SaveELine
     
     FindInvoicesWithTrnID = True
     
@@ -4861,7 +4913,7 @@ Private Sub cmdIndex_Click(Index As Integer)
             If Left(txtPersonDescription.text, 2) <> "**" Then
                 Set tmpRecordset = CheckForMatch("CommonDB", txtPersonDescription.text, txtTable.text, IIf(IsNumeric(txtPersonDescription.text), "TaxNo", "Description"), "String", 1, 2)
                 If tmpRecordset.RecordCount > 0 Then
-                    tmpTableData = DisplayIndex(tmpRecordset, True, False, "Ευρετήριο", 4, 0, 1, 2, 13, "ID", "Περιγραφή", "Α.Φ.Μ.", "Ε", 0, 50, 15, 0, 1, 0, 1, 1, "Persons")
+                    tmpTableData = DisplayIndex(tmpRecordset, True, False, "Ευρετήριο", 4, 0, 1, 2, 14, "ID", "Περιγραφή", "Α.Φ.Μ.", "Ε", 0, 50, 15, 0, 1, 0, 1, 1, "Persons")
                 End If
             End If
             If tmpTableData.strCode <> "" Then
@@ -5067,7 +5119,7 @@ Private Sub Form_Load()
     SetUpGrid lstIconList, grdCommonTransactions
     PositionControls Me, True, grdCommonTransactions: ColorizeControls Me, True
     
-    ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
+    ClearFields txtInvoiceTrnID, txtInvoicePersonID, txtInvoiceCodeID, txtInvoicePrintExtraRemarksID, txtInvoiceDeliveryPointID, txtInvoicePaymentWayID, txtInvoiceInDate, txtInvoiceInTime, txtInvoiceIsInvoiced, txtInvoiceIsPrinted, txtCodeDetailsID, txtCodeHandID, txtCodeLastNo, txtVATStateID, txtCodeInventoryQty, txtCodeInventoryValue, txtCodeTransformID, mskCodeLastDate, txtCodePrinterID, mskCodeDetailLines, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATArticleNo, grdCommonTransactions, txtCodeDateCheckID, txtCodeIsCreditID, txtCodeDTable, txtCodeDTableCredit
     ClearFields mskInvoiceIssueDate, txtPersonDescription, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoicePrintExtraRemarks, txtDeliveryPointDescription, txtPaymentWayDescription, txtInvoicePlates, txtInvoiceRemarks, txtInvoiceTransportReason, txtInvoiceTransportWay, txtInvoiceLoadingSite, txtInvoiceDestinationSite, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
     ClearFields mskTotalQty, mskTotalPreDiscount, mskDiscount, mskTransDiscount, mskTotalRestAmount, mskExtraCharges, mskTotalVAT, mskTotalGross
     
@@ -6024,7 +6076,7 @@ End Sub
 Private Sub txtPersonDescription_Change()
 
     If txtPersonDescription.text = "" Then
-        ClearFields txtInvoicePersonID, txtInvoicePlates, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATStateID, txtInvoiceCodeID, txtCodeShortDescription, txtInvoiceNo, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
+        ClearFields txtInvoicePersonID, txtInvoicePlates, txtProfession, txtAddress, txtCity, txtTaxNo, txtPhones, txtTaxOfficeDescription, txtVATArticleNo, txtVATStateID, txtInvoiceCodeID, txtCodeShortDescription, txtInvoiceNo, txtCodeShortDescriptionCredit, txtInvoiceNoCredit
     End If
     
     CreateELine

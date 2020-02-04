@@ -24,14 +24,14 @@ Begin VB.Form Persons
       BorderStyle     =   0  'None
       Height          =   690
       Left            =   450
-      TabIndex        =   45
-      Top             =   8925
+      TabIndex        =   46
+      Top             =   9450
       Width           =   10365
       Begin GurhanButtonOCX.GurhanButton cmdButton 
          Height          =   690
          Index           =   0
          Left            =   225
-         TabIndex        =   46
+         TabIndex        =   47
          TabStop         =   0   'False
          Top             =   0
          Width           =   1365
@@ -58,7 +58,7 @@ Begin VB.Form Persons
          Height          =   690
          Index           =   1
          Left            =   1650
-         TabIndex        =   47
+         TabIndex        =   48
          TabStop         =   0   'False
          Top             =   0
          Width           =   1365
@@ -85,7 +85,7 @@ Begin VB.Form Persons
          Height          =   690
          Index           =   6
          Left            =   8775
-         TabIndex        =   48
+         TabIndex        =   49
          TabStop         =   0   'False
          Top             =   0
          Width           =   1365
@@ -112,7 +112,7 @@ Begin VB.Form Persons
          Height          =   690
          Index           =   2
          Left            =   3075
-         TabIndex        =   49
+         TabIndex        =   50
          TabStop         =   0   'False
          Top             =   0
          Width           =   1365
@@ -139,7 +139,7 @@ Begin VB.Form Persons
          Height          =   690
          Index           =   3
          Left            =   4500
-         TabIndex        =   50
+         TabIndex        =   51
          TabStop         =   0   'False
          Top             =   0
          Width           =   1365
@@ -166,7 +166,7 @@ Begin VB.Form Persons
          Height          =   690
          Index           =   4
          Left            =   5925
-         TabIndex        =   51
+         TabIndex        =   52
          TabStop         =   0   'False
          Top             =   0
          Width           =   1365
@@ -193,7 +193,7 @@ Begin VB.Form Persons
          Height          =   690
          Index           =   5
          Left            =   7350
-         TabIndex        =   52
+         TabIndex        =   53
          TabStop         =   0   'False
          Top             =   0
          Width           =   1365
@@ -225,7 +225,7 @@ Begin VB.Form Persons
       ForeColor       =   &H80000008&
       Height          =   3690
       Left            =   10125
-      TabIndex        =   25
+      TabIndex        =   26
       Top             =   3450
       Width           =   4515
       Begin VB.TextBox txtOppositeTable 
@@ -244,7 +244,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   59
+         TabIndex        =   60
          TabStop         =   0   'False
          Text            =   "7"
          Top             =   2325
@@ -266,7 +266,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   75
-         TabIndex        =   58
+         TabIndex        =   59
          TabStop         =   0   'False
          Text            =   "OppositeTable"
          Top             =   2325
@@ -288,7 +288,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   56
+         TabIndex        =   57
          TabStop         =   0   'False
          Text            =   "5"
          Top             =   1575
@@ -311,7 +311,7 @@ Begin VB.Form Persons
          Height          =   315
          Index           =   1
          Left            =   75
-         TabIndex        =   55
+         TabIndex        =   56
          TabStop         =   0   'False
          Text            =   "Persons.Active"
          Top             =   1575
@@ -333,7 +333,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   44
+         TabIndex        =   45
          TabStop         =   0   'False
          Text            =   "6"
          Top             =   2700
@@ -355,7 +355,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   75
-         TabIndex        =   43
+         TabIndex        =   44
          TabStop         =   0   'False
          Text            =   "RefersTo"
          Top             =   2700
@@ -378,7 +378,7 @@ Begin VB.Form Persons
          Height          =   315
          Index           =   0
          Left            =   75
-         TabIndex        =   41
+         TabIndex        =   42
          TabStop         =   0   'False
          Text            =   "Persons.CountryID"
          Top             =   1200
@@ -400,7 +400,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   40
+         TabIndex        =   41
          TabStop         =   0   'False
          Text            =   "4"
          Top             =   1200
@@ -422,7 +422,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   36
+         TabIndex        =   37
          TabStop         =   0   'False
          Text            =   "5"
          Top             =   1950
@@ -444,7 +444,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   75
-         TabIndex        =   35
+         TabIndex        =   36
          TabStop         =   0   'False
          Text            =   "Table"
          Top             =   1950
@@ -466,7 +466,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   31
+         TabIndex        =   32
          TabStop         =   0   'False
          Text            =   "3"
          Top             =   825
@@ -488,7 +488,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   75
-         TabIndex        =   30
+         TabIndex        =   31
          TabStop         =   0   'False
          Text            =   "Persons.VATStateID"
          Top             =   825
@@ -510,7 +510,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   29
+         TabIndex        =   30
          TabStop         =   0   'False
          Text            =   "2"
          Top             =   450
@@ -532,7 +532,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   75
-         TabIndex        =   28
+         TabIndex        =   29
          TabStop         =   0   'False
          Text            =   "Persons.TaxOfficeID"
          Top             =   450
@@ -554,7 +554,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   75
-         TabIndex        =   27
+         TabIndex        =   28
          TabStop         =   0   'False
          Text            =   "Persons.ID"
          Top             =   75
@@ -576,7 +576,7 @@ Begin VB.Form Persons
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   2100
-         TabIndex        =   26
+         TabIndex        =   27
          TabStop         =   0   'False
          Text            =   "1"
          Top             =   75
@@ -787,8 +787,8 @@ Begin VB.Form Persons
    Begin UserControls.newText txtEmail 
       Height          =   465
       Left            =   2625
-      TabIndex        =   11
-      Top             =   5850
+      TabIndex        =   12
+      Top             =   6375
       Width           =   6165
       _ExtentX        =   10874
       _ExtentY        =   820
@@ -809,7 +809,7 @@ Begin VB.Form Persons
       Height          =   465
       Index           =   0
       Left            =   7650
-      TabIndex        =   32
+      TabIndex        =   33
       TabStop         =   0   'False
       Top             =   2175
       Width           =   390
@@ -837,7 +837,7 @@ Begin VB.Form Persons
       Height          =   465
       Index           =   1
       Left            =   8100
-      TabIndex        =   33
+      TabIndex        =   34
       TabStop         =   0   'False
       Top             =   2175
       Width           =   390
@@ -865,7 +865,7 @@ Begin VB.Form Persons
       Height          =   465
       Index           =   2
       Left            =   7650
-      TabIndex        =   34
+      TabIndex        =   35
       TabStop         =   0   'False
       Top             =   5325
       Width           =   390
@@ -894,7 +894,7 @@ Begin VB.Form Persons
       Left            =   2625
       TabIndex        =   0
       TabStop         =   0   'False
-      Top             =   7950
+      Top             =   8475
       Width           =   1440
       _ExtentX        =   2540
       _ExtentY        =   820
@@ -915,8 +915,8 @@ Begin VB.Form Persons
    Begin UserControls.newText txtCountryDescription 
       Height          =   465
       Left            =   2625
-      TabIndex        =   13
-      Top             =   6900
+      TabIndex        =   14
+      Top             =   7425
       Width           =   4965
       _ExtentX        =   8758
       _ExtentY        =   820
@@ -937,9 +937,9 @@ Begin VB.Form Persons
       Height          =   465
       Index           =   3
       Left            =   7650
-      TabIndex        =   38
+      TabIndex        =   39
       TabStop         =   0   'False
-      Top             =   6900
+      Top             =   7425
       Width           =   390
       _ExtentX        =   688
       _ExtentY        =   820
@@ -965,9 +965,9 @@ Begin VB.Form Persons
       Height          =   465
       Index           =   4
       Left            =   8100
-      TabIndex        =   42
+      TabIndex        =   43
       TabStop         =   0   'False
-      Top             =   6900
+      Top             =   7425
       Width           =   390
       _ExtentX        =   688
       _ExtentY        =   820
@@ -992,8 +992,8 @@ Begin VB.Form Persons
    Begin UserControls.newText txtActiveDescription 
       Height          =   465
       Left            =   2625
-      TabIndex        =   14
-      Top             =   7425
+      TabIndex        =   15
+      Top             =   7950
       Width           =   615
       _ExtentX        =   1085
       _ExtentY        =   820
@@ -1015,9 +1015,9 @@ Begin VB.Form Persons
       Height          =   465
       Index           =   5
       Left            =   3300
-      TabIndex        =   53
+      TabIndex        =   54
       TabStop         =   0   'False
-      Top             =   7425
+      Top             =   7950
       Width           =   390
       _ExtentX        =   688
       _ExtentY        =   820
@@ -1042,8 +1042,8 @@ Begin VB.Form Persons
    Begin UserControls.newText txtBankAccounts 
       Height          =   465
       Left            =   2625
-      TabIndex        =   12
-      Top             =   6375
+      TabIndex        =   13
+      Top             =   6900
       Width           =   6165
       _ExtentX        =   10874
       _ExtentY        =   820
@@ -1059,6 +1059,49 @@ Begin VB.Form Persons
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+   End
+   Begin UserControls.newText txtVATArticleNo 
+      Height          =   465
+      Left            =   2625
+      TabIndex        =   11
+      Top             =   5850
+      Width           =   1440
+      _ExtentX        =   2540
+      _ExtentY        =   820
+      Alignment       =   2
+      ForeColor       =   0
+      MaxLength       =   5
+      BackColor       =   4210688
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Ubuntu Condensed"
+         Size            =   11.25
+         Charset         =   161
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+   End
+   Begin VB.Label lblLabel 
+      AutoSize        =   -1  'True
+      BackColor       =   &H000080FF&
+      Caption         =   "Αρθρο απαλλαγής Φ.Π.Α."
+      BeginProperty Font 
+         Name            =   "Ubuntu Condensed"
+         Size            =   9.75
+         Charset         =   161
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   315
+      Index           =   14
+      Left            =   450
+      TabIndex        =   61
+      Top             =   5925
+      Width           =   1815
    End
    Begin VB.Label lblLabel 
       AutoSize        =   -1  'True
@@ -1077,8 +1120,8 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   13
       Left            =   450
-      TabIndex        =   57
-      Top             =   6450
+      TabIndex        =   58
+      Top             =   6975
       Width           =   1740
    End
    Begin VB.Label lblLabel 
@@ -1098,8 +1141,8 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   12
       Left            =   450
-      TabIndex        =   54
-      Top             =   7500
+      TabIndex        =   55
+      Top             =   8025
       Width           =   615
    End
    Begin VB.Label lblLabel 
@@ -1119,8 +1162,8 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   11
       Left            =   450
-      TabIndex        =   39
-      Top             =   6975
+      TabIndex        =   40
+      Top             =   7500
       Width           =   1740
    End
    Begin VB.Label lblLabel 
@@ -1140,8 +1183,8 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   10
       Left            =   450
-      TabIndex        =   37
-      Top             =   8025
+      TabIndex        =   38
+      Top             =   8550
       Width           =   1740
    End
    Begin VB.Shape shpRightEdge 
@@ -1160,7 +1203,7 @@ Begin VB.Form Persons
       BorderStyle     =   0  'Transparent
       Height          =   390
       Left            =   3600
-      Top             =   9600
+      Top             =   10125
       Visible         =   0   'False
       Width           =   840
    End
@@ -1170,7 +1213,7 @@ Begin VB.Form Persons
       BorderStyle     =   0  'Transparent
       Height          =   540
       Left            =   3000
-      Top             =   8400
+      Top             =   8925
       Visible         =   0   'False
       Width           =   840
    End
@@ -1227,8 +1270,8 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   1
       Left            =   450
-      TabIndex        =   24
-      Top             =   5925
+      TabIndex        =   25
+      Top             =   6450
       Width           =   465
    End
    Begin VB.Label lblTitle 
@@ -1248,7 +1291,7 @@ Begin VB.Form Persons
       ForeColor       =   &H000080FF&
       Height          =   720
       Left            =   225
-      TabIndex        =   23
+      TabIndex        =   24
       Top             =   75
       Width           =   3810
    End
@@ -1269,7 +1312,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   9
       Left            =   450
-      TabIndex        =   22
+      TabIndex        =   23
       Top             =   5400
       Width           =   1740
    End
@@ -1290,7 +1333,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   8
       Left            =   450
-      TabIndex        =   21
+      TabIndex        =   22
       Top             =   3825
       Width           =   1740
    End
@@ -1311,7 +1354,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   7
       Left            =   450
-      TabIndex        =   20
+      TabIndex        =   21
       Top             =   2250
       Width           =   1740
    End
@@ -1332,7 +1375,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   6
       Left            =   450
-      TabIndex        =   19
+      TabIndex        =   20
       Top             =   1725
       Width           =   1740
    End
@@ -1353,7 +1396,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   5
       Left            =   450
-      TabIndex        =   18
+      TabIndex        =   19
       Top             =   3300
       Width           =   1740
    End
@@ -1374,7 +1417,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   4
       Left            =   450
-      TabIndex        =   17
+      TabIndex        =   18
       Top             =   2775
       Width           =   1740
    End
@@ -1395,7 +1438,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   3
       Left            =   450
-      TabIndex        =   16
+      TabIndex        =   17
       Top             =   4350
       Width           =   1740
    End
@@ -1416,7 +1459,7 @@ Begin VB.Form Persons
       Height          =   315
       Index           =   0
       Left            =   450
-      TabIndex        =   15
+      TabIndex        =   16
       Top             =   4875
       Width           =   1740
    End
@@ -1472,8 +1515,8 @@ Private Function AbortProcedure(blnStatus)
     If Not blnStatus Then
         If MyMsgBox(3, strAppTitle, strMessages(3), 2) Then
             blnStatus = False
-            ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription
-            DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
+            ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription, txtVATArticleNo
+            DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, txtVATArticleNo, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
             UpdateButtons Me, 6, 1, 0, 0, IIf(CheckForLoadedForm("PersonsIndex"), 0, 1), 0, 0, 1
         End If
         Exit Function
@@ -1518,14 +1561,14 @@ Public Function SeekRecord(myID, myTable, myRefersTo)
     Dim tmpRecordset As Recordset
     Dim tmpTableData As typTableData
     
-    ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription
-    DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
+    ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription, txtVATArticleNo
+    DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, txtVATArticleNo, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
     
     SeekRecord = False
     
     blnEnableDelete = SimpleSeek("Invoices", "PersonID", myID, myRefersTo)
     
-    If MainSeekRecord("CommonDB", myTable, "ID", myID, True, txtID, txtDescription, txtTaxNo, txtTaxOfficeID, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtVATStateID, txtEmail, txtBankAccounts, txtCountryID, txtActiveID) Then
+    If MainSeekRecord("CommonDB", myTable, "ID", myID, True, txtID, txtDescription, txtTaxNo, txtTaxOfficeID, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtVATStateID, txtVATArticleNo, txtEmail, txtBankAccounts, txtCountryID, txtActiveID) Then
         'Οικονομική υπηρεσία
         Set tmpRecordset = CheckForMatch("CommonDB", txtTaxOfficeID.text, "TaxOffices", "TaxOfficeID", "Numeric", 0, 1)
         txtTaxOfficeID.text = tmpRecordset.Fields(0)
@@ -1543,7 +1586,7 @@ Public Function SeekRecord(myID, myTable, myRefersTo)
         txtActiveID.text = tmpRecordset.Fields(0)
         txtActiveDescription.text = tmpRecordset.Fields(1)
         '
-        EnableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
+        EnableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, txtVATArticleNo, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
         UpdateButtons Me, 6, 0, 1, IIf(blnEnableDelete, 1, 0), 0, 1, 1, 0
         blnStatus = False
         SeekRecord = True
@@ -1560,8 +1603,8 @@ End Function
 Private Function DeleteRecord()
     
     If MainDeleteRecord("CommonDB", txtTable.text, strAppTitle, "ID", txtID.text, "True") Then
-        ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription
-        DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
+        ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription, txtVATArticleNo
+        DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, txtVATArticleNo, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
         UpdateButtons Me, 6, 1, 0, 0, IIf(CheckForLoadedForm("PersonsIndex"), 0, 1), 0, 0, 1
     End If
 
@@ -1572,8 +1615,8 @@ Private Function NewRecord()
     Dim tmpRecordset As Recordset
     
     blnStatus = True
-    ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription
-    EnableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
+    ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription, txtVATArticleNo
+    EnableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, txtVATArticleNo, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
     UpdateButtons Me, 6, 0, 1, 0, 0, 0, 1, 0
     txtDescription.SetFocus
     'Ενεργός
@@ -1588,9 +1631,9 @@ Private Function SaveRecord()
     
     If Not ValidateFields Then Exit Function
     
-    If MainSaveRecord("CommonDB", txtTable.text, blnStatus, strAppTitle, "ID", txtID.text, txtDescription.text, txtTaxNo.text, txtTaxOfficeID.text, txtProfession.text, txtAddress.text, txtCity.text, txtPhones.text, txtPersonInCharge.text, txtVATStateID.text, txtEmail.text, txtBankAccounts.text, txtCountryID.text, txtActiveID.text, 1, strCurrentUser) <> 0 Then
-        ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription
-        DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
+    If MainSaveRecord("CommonDB", txtTable.text, blnStatus, strAppTitle, "ID", txtID.text, txtDescription.text, txtTaxNo.text, txtTaxOfficeID.text, txtProfession.text, txtAddress.text, txtCity.text, txtPhones.text, txtPersonInCharge.text, txtVATStateID.text, txtVATArticleNo.text, txtEmail.text, txtBankAccounts.text, txtCountryID.text, txtActiveID.text, 1, strCurrentUser) <> 0 Then
+        ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription, txtVATArticleNo
+        DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, txtVATArticleNo, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
         UpdateButtons Me, 6, 1, 0, 0, IIf(CheckForLoadedForm("PersonsIndex"), 0, 1), 0, 0, 1
     Else
         DisplayErrorMessage True, Err.Description
@@ -1805,8 +1848,8 @@ End Function
 Private Sub Form_Load()
     
     PositionControls Me, False: ColorizeControls Me
-    ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription
-    DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
+    ClearFields txtID, txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeID, txtTaxOfficeDescription, txtVATStateID, txtVATStateDescription, , txtCountryID, txtCountryDescription, txtActiveID, txtActiveDescription, txtVATArticleNo
+    DisableFields txtDescription, txtProfession, txtAddress, txtCity, txtPhones, txtPersonInCharge, txtEmail, txtBankAccounts, txtTaxNo, txtTaxOfficeDescription, txtVATStateDescription, txtCountryDescription, txtActiveDescription, txtVATArticleNo, cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
     UpdateButtons Me, 6, 1, 0, 0, IIf(CheckForLoadedForm("PersonsIndex"), 0, 1), 0, 0, 1
     
 End Sub
