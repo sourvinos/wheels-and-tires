@@ -2493,7 +2493,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
             cmdButton_Click 8
         Case vbKeyF10 And cmdButton(9).Enabled, vbKeyS And CtrlDown = 4 And cmdButton(9).Enabled
             cmdButton_Click 9
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12
             ToggleInfoPanel Me
     End Select
 

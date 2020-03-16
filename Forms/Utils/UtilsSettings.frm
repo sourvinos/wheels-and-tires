@@ -3143,7 +3143,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
             GotoPreviousPanel Me, btnPanel.Count
         Case vbKeyPageDown
             GotoNextPanel Me, btnPanel.Count
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12
             ToggleInfoPanel Me
     End Select
 

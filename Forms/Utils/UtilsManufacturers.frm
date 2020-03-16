@@ -596,6 +596,7 @@ Private Function AbortProcedure(blnStatus)
             blnStatus = False
             ClearFields txtManufacturerID, txtManufacturerDescription, txtManufacturerIsShownID, txtManufacturerIsShownDescription
             DisableFields txtManufacturerDescription, txtManufacturerIsShownDescription
+            DisableFields cmdIndex(0)
             UpdateButtons Me, 4, 1, 0, 0, 0, 1
             grdUtilsManufacturers.SetFocus
         End If
@@ -615,6 +616,7 @@ Private Function DeleteRecord()
         HighlightNextRow grdUtilsManufacturers, Val(txtCurrentGridRow.text), 2, True
         ClearFields txtManufacturerID, txtManufacturerDescription, txtManufacturerIsShownID, txtManufacturerIsShownDescription
         DisableFields txtManufacturerDescription, txtManufacturerIsShownDescription
+        DisableFields cmdIndex(0)
         UpdateButtons Me, 4, 1, 0, 0, 0, 1
     End If
 
@@ -625,6 +627,7 @@ Private Function NewRecord()
     blnStatus = True
     ClearFields txtManufacturerID, txtManufacturerDescription, txtManufacturerIsShownID, txtManufacturerIsShownDescription
     EnableFields txtManufacturerDescription, txtManufacturerIsShownDescription
+    EnableFields cmdIndex(0)
     UpdateButtons Me, 4, 0, 1, 0, 1, 0
     txtManufacturerDescription.SetFocus
 
@@ -644,6 +647,7 @@ Private Function SaveRecord()
         HighlightRow grdUtilsManufacturers, 1, txtManufacturerID.text, True
         ClearFields txtManufacturerID, txtManufacturerDescription, txtManufacturerIsShownID, txtManufacturerIsShownDescription
         DisableFields txtManufacturerDescription, txtManufacturerIsShownDescription
+        DisableFields cmdIndex(0)
         UpdateButtons Me, 4, 1, 0, 0, 0, 1
     End If
     
@@ -660,6 +664,7 @@ Private Function SeekRecord()
     
     ClearFields txtManufacturerID, txtManufacturerDescription, txtManufacturerIsShownID, txtManufacturerIsShownDescription
     DisableFields txtManufacturerDescription, txtManufacturerIsShownDescription
+    DisableFields cmdIndex(0)
     
     blnEnableDelete = SimpleSeek("Items", "ManufacturerID", grdUtilsManufacturers.CellValue(grdUtilsManufacturers.CurRow, 1))
     
@@ -671,6 +676,7 @@ Private Function SeekRecord()
         '
         blnStatus = False
         EnableFields txtManufacturerDescription, txtManufacturerIsShownDescription
+        EnableFields cmdIndex(0)
         UpdateButtons Me, 4, 0, 1, IIf(blnEnableDelete, 1, 0), 1, 0
         txtManufacturerDescription.SetFocus
         txtCurrentGridRow.text = grdUtilsManufacturers.CurRow
@@ -759,7 +765,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyEscape
             If cmdButton(3).Enabled Then cmdButton_Click 3: Exit Function
             If cmdButton(4).Enabled Then cmdButton_Click 4
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12
             ToggleInfoPanel Me
 End Select
 
@@ -771,6 +777,7 @@ Private Sub Form_Load()
     PositionControls Me, False: ColorizeControls Me
     ClearFields txtManufacturerID, txtManufacturerDescription, txtManufacturerIsShownID, txtManufacturerIsShownDescription
     DisableFields txtManufacturerDescription, txtManufacturerIsShownDescription
+    DisableFields cmdIndex(0)
     UpdateButtons Me, 4, 1, 0, 0, 0, 1
 
 End Sub

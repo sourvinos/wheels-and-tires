@@ -899,7 +899,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyEscape
             If cmdButton(1).Enabled Then cmdButton_Click 1: Exit Function
             If cmdButton(2).Enabled Then cmdButton_Click 2
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12
             ToggleInfoPanel Me
     End Select
 

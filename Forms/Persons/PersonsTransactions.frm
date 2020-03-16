@@ -1791,7 +1791,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
             GotoPreviousPanel Me, btnPanel.Count
         Case vbKeyPageDown
             GotoNextPanel Me, btnPanel.Count
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12
             ToggleInfoPanel Me
 End Select
 
@@ -1844,7 +1844,10 @@ Private Sub Form_Load()
     PositionPanels
     PositionControls Me, False: ColorizeControls Me, , True
     ClearFields txtInvoiceTrnID, txtInvoiceCodeID, txtInvoiceInDate, txtInvoiceInTime, mskInvoiceIssueDate, txtCodeShortDescription, lblCodeDescription, txtInvoiceNo, txtInvoiceRemarks, grdPersonsTransactions, grdPersonsTransactionsChecks, mskTotal, mskTotalChecks
-    DisableFields mskInvoiceIssueDate, txtCodeShortDescription, txtInvoiceNo, txtInvoiceRemarks, grdPersonsTransactions, grdPersonsTransactionsChecks, cmdIndex(0), cmdIndex(1), btnPanel(1)
+    DisableFields mskInvoiceIssueDate, txtCodeShortDescription, txtInvoiceNo, txtInvoiceRemarks
+    DisableFields grdPersonsTransactions, grdPersonsTransactionsChecks
+    DisableFields cmdIndex(0), cmdIndex(1)
+    DisableFields btnPanel(0), btnPanel(1)
     UpdateButtons Me, 6, 1, 0, 0, 1, 0, 0, 1
     ColorizeGrid grdPersonsTransactions, grdPersonsTransactionsChecks
 

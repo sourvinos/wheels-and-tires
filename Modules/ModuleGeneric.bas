@@ -674,7 +674,7 @@ Function PositionCenteredScreenControls(thisForm As Form, formFullScreen As Bool
 End Function
 
 Function CustomizeGrid(ParamArray myGrid() As Variant)
-    
+
     Dim intLoop As Integer
     
     For intLoop = 0 To UBound(myGrid)
@@ -737,7 +737,7 @@ Function PositionFullScreenControls(thisForm As Form, formFullScreen As Boolean,
                 .Top = thisForm.shpBackground.Height + 550
                 .Left = (thisForm.frmContainer.Width / 2) - (.Width / 2)
             End With
-            grdGrid.Height = thisForm.Height - 3150 - thisForm.frmFrameForGridButtons.Height
+            grdGrid.Height = thisForm.Height - 2050 - thisForm.frmFrameForGridButtons.Height
         End If
         'Σύνολα αγορών - πωλήσεων
         If ctl.Name = "frmTotals" Then
@@ -885,7 +885,7 @@ Function ConvertToAsciiFile(strUnicodeFile, strAsciiFile)
     Dim strOutputFile As String
     
     strInputFile = strUnicodeFile
-    strOutputFile = strAsciiFile & "demo"
+    strOutputFile = strAsciiFile
     
     Open strInputFile For Input As #1
     Open strOutputFile For Output As #2
@@ -2345,6 +2345,7 @@ Function LoadMessages()
     strMessages(36) = "ΖΗΤΟΥΜΕΝΗ ΠΕΡΙΟΔΟΣ"
     strMessages(37) = Chr(13) & "Δεν έχετε δώσει είδος."
     strMessages(38) = "Ο έλεγχος ολοκληρώθηκε χωρίς λάθη," & Chr(13) & "αλλά προτείνονται αλλαγές." & Chr(13) & "Ελέγξτε το αρχείο που έχει δημιουργηθεί."
+    strMessages(39) = "Πρέπει να ενημερώσετε το πεδίο" & Chr(13) & "'Αρθρο απαλλαγής ΦΠΑ'" & Chr(13) & "στα στοιχεία του πελάτη"
     
     strMessages(50) = "Η ημερομηνία έκδοσης αφορά" & Chr(13) & "διάστημα το οποίο είναι κλειδωμένο." & Chr(13) & "Θέλετε να συνεχίσετε;"
     strMessages(51) = Chr(13) & "Δεν έχετε επιλέξει παραστατικά."
