@@ -496,9 +496,9 @@ Private Sub Form_Activate()
         Me.Tag = "False"
         ClearFields lblProgress
         cboUsers.SetFocus
-        cboUsers.ListIndex = 1
-        cboCompanies.ListIndex = 0
-        txtPassword.text = "1701"
+        'cboUsers.ListIndex = 1
+        'cboCompanies.ListIndex = 0
+        'txtPassword.text = "1701"
     End If
     
 End Sub

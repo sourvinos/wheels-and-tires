@@ -2052,7 +2052,7 @@ Private Sub cmdIndex_Click(Index As Integer)
             'Συναλλασόμενος
             If txtPersonDescription.text = "" Then Exit Sub
             Set tmpRecordset = CheckForMatch("CommonDB", txtPersonDescription.text, txtTable.text, "Description", "String", 1, 2)
-            tmpTableData = DisplayIndex(tmpRecordset, True, False, "Ευρετήριο", 4, 0, 1, 2, 13, "ID", "Περιγραφή", "Α.Φ.Μ.", "Ε", 0, 50, 15, 0, 1, 0, 1, 1, "Persons")
+            tmpTableData = DisplayIndex(tmpRecordset, True, False, "Ευρετήριο", 4, 0, 1, 2, 14, "ID", "Περιγραφή", "Α.Φ.Μ.", "Ε", 0, 50, 15, 0, 1, 0, 1, 1, "Persons")
             txtPersonID.text = tmpTableData.strCode
             txtPersonDescription.text = tmpTableData.strOneField
             txtEmail.text = tmpTableData.strThreeField

@@ -1258,6 +1258,8 @@ Private Function SaveInvoice()
             "", _
             "", _
             "1", _
+            "0", _
+            "0", _
             strCurrentUser) <> 0 Then
             blnError = True
         End If

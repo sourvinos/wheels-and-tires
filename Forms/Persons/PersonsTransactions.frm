@@ -1483,7 +1483,7 @@ Private Function SaveInvoices()
     
     For lngRow = 1 To grdPersonsTransactions.RowCount
         If grdPersonsTransactions.CellValue(lngRow, "ID") <> "" Then
-            If Not MainSaveRecord("CommonDB", "Invoices", True, strAppTitle, "ID", lngTrnID, mskInvoiceIssueDate.text, Val(txtInvoiceNo.text), txtInvoiceCodeID.text, Val(txtRefersTo.text), 0, 0, 0, 0, 0, 0, 0, grdPersonsTransactions.CellValue(lngRow, "Amount"), lngTrnID, txtInvoiceRemarks.text, "", 6, grdPersonsTransactions.CellValue(lngRow, "ID"), 0, 0, Date, Time, "", "", "", "", 1, 0, strCurrentUser) <> 0 Then
+            If Not MainSaveRecord("CommonDB", "Invoices", True, strAppTitle, "ID", lngTrnID, mskInvoiceIssueDate.text, Val(txtInvoiceNo.text), txtInvoiceCodeID.text, Val(txtRefersTo.text), 0, 0, 0, 0, 0, 0, 0, grdPersonsTransactions.CellValue(lngRow, "Amount"), lngTrnID, txtInvoiceRemarks.text, "", 6, grdPersonsTransactions.CellValue(lngRow, "ID"), 0, 0, Date, Time, "", "", "", "", 1, 0, 0, strCurrentUser) <> 0 Then
                 blnError = True
             End If
         End If
