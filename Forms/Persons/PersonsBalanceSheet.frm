@@ -1104,6 +1104,7 @@ Private Function RefreshList()
     Dim lngCol As Long
     Dim lngPersonID As Long
     Dim strPersonDescription As String
+    Dim strEmail As String
     
     'Αρχικές τιμές
     ReDim curPrevious(2)
@@ -1124,7 +1125,7 @@ Private Function RefreshList()
     End With
     
     'Αγορές, πωλήσεις, κινήσεις πελατών και προμηθευτών
-    strSQL = "SELECT InvoiceID, InvoiceIssueDate, InvoiceRefersToID, InvoiceGrossAmount, InvoicePersonID, PaymentWayCreditID, CodeCustomers, CodeSuppliers, Description, Codes.ShowInList " _
+    strSQL = "SELECT InvoiceID, InvoiceIssueDate, InvoiceRefersToID, InvoiceGrossAmount, InvoicePersonID, PaymentWayCreditID, CodeCustomers, CodeSuppliers, Description, Codes.ShowInList, Email " _
     & "FROM (((Invoices " _
     & "INNER JOIN " & txtTable.text & " ON Invoices.InvoicePersonID = " & txtTable.text & ".ID) " _
     & "INNER JOIN Codes ON Invoices.InvoiceCodeID = Codes.CodeID) " _
@@ -1277,6 +1278,7 @@ AddLine:
         lngRow = .RowCount
         .CellValue(.RowCount, "PersonID") = lngPersonID
         .CellValue(.RowCount, "PersonDescription") = strPersonDescription
+        .CellValue(.RowCount, "Email") = strEmail
         .CellValue(.RowCount, "LastInvoiceIssueDate") = datLastInvoiceDate
         .CellValue(.RowCount, "PreviousDebit") = curPrevious(0)
         .CellValue(.RowCount, "PreviousCredit") = curPrevious(1)
@@ -1293,6 +1295,7 @@ UpdateAreas:
     lngPersonID = rstRecordset!InvoicePersonID
     strPersonDescription = rstRecordset!Description
     datLastInvoiceDate = rstRecordset!InvoiceIssueDate
+    strEmail = rstRecordset!Email
     
     Return
     
@@ -1331,14 +1334,14 @@ Private Sub Form_Activate()
     If Me.Tag = "True" Then
         Me.Tag = "False"
         AddColumnsToGrid grdPersonsBalanceSheet, 44, GetSetting(strAppTitle, "Layout Strings", "grdPersonsBalanceSheet"), _
-            "10NCNPersonID,50NLNPersonDescription,10NCDXLastInvoiceIssueDate,10NRFXPreviousDebit,10NRFXPreviousCredit,10NRFXPreviousBalance,10NRFDebit,10NRFCredit,10NRFBalance,03NCNSelected", _
-            "ID,Επωνυμία,Τελευταία εγγραφή,Προηγούμενη χρέωση,Προηγούμενη πίστωση,Προηγούμενο υπόλοιπο,Χρέωση,Πίστωση,Υπόλοιπο,Ε"
+            "10NCNPersonID,50NLNPersonDescription,50NLNEmail,10NCDXLastInvoiceIssueDate,10NRFXPreviousDebit,10NRFXPreviousCredit,10NRFXPreviousBalance,10NRFDebit,10NRFCredit,10NRFBalance,03NCNSelected", _
+            "ID,Επωνυμία,Email,Τελευταία εγγραφή,Προηγούμενη χρέωση,Προηγούμενη πίστωση,Προηγούμενο υπόλοιπο,Χρέωση,Πίστωση,Υπόλοιπο,Ε"
         Me.Refresh
         frmCriteria(0).Visible = True
         mskIssueFrom.SetFocus
     End If
     
-    'AddDummyLines grdPersonsBalanceSheet, 6, 50, 10, 13, 13, 13, 13, 13, 13, 4
+    'AddDummyLines grdPersonsBalanceSheet, 6, 50, 30, 10, 13, 13, 13, 13, 13, 13, 4
     
 End Sub
 

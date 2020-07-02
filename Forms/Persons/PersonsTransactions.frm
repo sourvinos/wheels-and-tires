@@ -1981,7 +1981,7 @@ Private Sub grdPersonsTransactions_AfterCommitEdit(ByVal lRow As Long, ByVal lCo
             'Επωνυμία
             If grdPersonsTransactions.CellValue(lRow, 2) <> "" Then
                 Set tmpRecordset = CheckForMatch("CommonDB", grdPersonsTransactions.CellValue(lRow, lCol), txtTable.text, "Description", "String", 1, 2)
-                tmpTableData = DisplayIndex(tmpRecordset, True, False, "Ευρετήριο", 4, 0, 1, 2, 13, "ID", "Περιγραφή", "Α.Φ.Μ.", "Ε", 0, 50, 15, 0, 1, 0, 1, 1, "Persons")
+                tmpTableData = DisplayIndex(tmpRecordset, True, False, "Ευρετήριο", 4, 0, 1, 2, 14, "ID", "Περιγραφή", "Α.Φ.Μ.", "Ε", 0, 50, 15, 0, 1, 0, 1, 1, "Persons")
                 grdPersonsTransactions.CellValue(lRow, 1) = tmpTableData.strCode
                 grdPersonsTransactions.CellValue(lRow, 2) = tmpTableData.strOneField
                 If tmpTableData.strCode <> "" Then
